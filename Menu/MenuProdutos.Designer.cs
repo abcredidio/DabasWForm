@@ -37,17 +37,19 @@
             // 
             // VoltarMenu
             // 
+            this.VoltarMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.VoltarMenu.Location = new System.Drawing.Point(89, 450);
             this.VoltarMenu.Name = "VoltarMenu";
             this.VoltarMenu.Size = new System.Drawing.Size(145, 50);
             this.VoltarMenu.TabIndex = 9;
-            this.VoltarMenu.Text = "Voltar para o Menu Principal";
+            this.VoltarMenu.Text = "Voltar para o Menu Cadastros";
             this.VoltarMenu.UseVisualStyleBackColor = true;
             this.VoltarMenu.Click += new System.EventHandler(this.VoltarMenu_Click);
             // 
             // ExcProd
             // 
             this.ExcProd.Enabled = false;
+            this.ExcProd.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ExcProd.Location = new System.Drawing.Point(89, 272);
             this.ExcProd.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.ExcProd.Name = "ExcProd";
@@ -59,6 +61,7 @@
             // AltProd
             // 
             this.AltProd.Enabled = false;
+            this.AltProd.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AltProd.Location = new System.Drawing.Point(89, 189);
             this.AltProd.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.AltProd.Name = "AltProd";
@@ -69,6 +72,7 @@
             // 
             // CadProd
             // 
+            this.CadProd.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CadProd.Location = new System.Drawing.Point(89, 106);
             this.CadProd.Margin = new System.Windows.Forms.Padding(80, 3, 3, 30);
             this.CadProd.Name = "CadProd";

@@ -37,16 +37,18 @@
             // 
             // VoltarMenu
             // 
+            this.VoltarMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.VoltarMenu.Location = new System.Drawing.Point(89, 450);
             this.VoltarMenu.Name = "VoltarMenu";
             this.VoltarMenu.Size = new System.Drawing.Size(145, 50);
             this.VoltarMenu.TabIndex = 14;
-            this.VoltarMenu.Text = "Voltar para o Menu Principal";
+            this.VoltarMenu.Text = "Voltar para o Menu Cadastros";
             this.VoltarMenu.UseVisualStyleBackColor = true;
             this.VoltarMenu.Click += new System.EventHandler(this.VoltarMenu_Click);
             // 
             // ExcCliente
             // 
+            this.ExcCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ExcCliente.Location = new System.Drawing.Point(89, 272);
             this.ExcCliente.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.ExcCliente.Name = "ExcCliente";
@@ -58,7 +60,7 @@
             // 
             // AltCliente
             // 
-            this.AltCliente.Enabled = false;
+            this.AltCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AltCliente.Location = new System.Drawing.Point(89, 189);
             this.AltCliente.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.AltCliente.Name = "AltCliente";
@@ -66,9 +68,11 @@
             this.AltCliente.TabIndex = 12;
             this.AltCliente.Text = "Alterar dados do Cliente";
             this.AltCliente.UseVisualStyleBackColor = true;
+            this.AltCliente.Click += new System.EventHandler(this.AltCliente_Click);
             // 
             // CadCliente
             // 
+            this.CadCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CadCliente.Location = new System.Drawing.Point(89, 106);
             this.CadCliente.Margin = new System.Windows.Forms.Padding(80, 3, 3, 30);
             this.CadCliente.Name = "CadCliente";
@@ -103,7 +107,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MenuClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DABAS - Menu Clientes";
+            this.Text = "DABAS - SYSTEM";
             this.ResumeLayout(false);
             this.PerformLayout();
 

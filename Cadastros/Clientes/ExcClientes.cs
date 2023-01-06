@@ -1,4 +1,5 @@
-﻿using CadClientesProdutosWForm.Server;
+﻿using CadClientesProdutosWForm;
+using CadClientesProdutosWForm.Server;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,36 +24,19 @@ namespace CadClientesProdutosWForm.Clientes
         {
             InitializeComponent();
             this.ExcClientesDTGrid.MultiSelect= false;
-            refresh();
             ExcClientesDTGrid.SelectionChanged += new
             System.EventHandler(ExcClientesDTGrid_SelectionChanged);
         }
 
-
-        private void CancelExcClientBTN_Click(object sender, EventArgs e)
+        private void AtualizarDTGridView()
         {
-            Close();
+            Cliente cliente = new Cliente();
+            ExcClientesDTGrid.DataSource = cliente.refresh("SELECT Nome, CPF, Email, DtNascimento, CEP, Endereço, Complemento, Municipio, Estado, Bairro, Numero, DtCadastro FROM Clientes");
         }
 
-        private void CancelCdClientBTN_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void refresh()
-        {
-            Connections connection = new Connections();
-
-            var sql = "SELECT Nome, CPF FROM Clientes";
-            var da = new SqlDataAdapter(sql, connection.CriarConexaoSql());
-            var dt = new DataTable();
-            da.Fill(dt);
-            ExcClientesDTGrid.DataSource = dt;
-        }
 
         private void ExcClientesDTGrid_SelectionChanged(object sender, EventArgs e)
         {
-
             if (ExcClientesDTGrid.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = ExcClientesDTGrid.SelectedRows[0];
@@ -62,28 +46,14 @@ namespace CadClientesProdutosWForm.Clientes
             }
         }
 
-        private void ExcluirCliente(string nome, string cpf)
-        {
-            Connections connection = new Connections();
-
-            SqlCommand command = new SqlCommand("DELETE FROM Clientes WHERE Nome = @nome AND CPF = @cpf", connection.CriarConexaoSql());
-
-            command.Parameters.AddWithValue("@nome", nome);
-            command.Parameters.AddWithValue("@cpf", cpf);
-
-            command.ExecuteNonQuery();
-
-            MessageBox.Show("Seu cliente foi excluido com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            refresh();
-        }
-
         private void DataRefreshExcClienteBTN_Click(object sender, EventArgs e)
         {
-            refresh();
+            AtualizarDTGridView();
         }
 
         private void ExcClientesExcluirBTN_Click(object sender, EventArgs e)
         {
+            Cliente cliente = new Cliente();
             MessageBox.Show($"Cliente {nome} de CPF: {cpf} selecionado", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             if (ExcClientesDTGrid.SelectedRows.Count == 1)
             {
@@ -91,13 +61,21 @@ namespace CadClientesProdutosWForm.Clientes
                 excClientesConfirmationBox.ShowDialog();
                 if (excClientesConfirmationBox.ExcluirCliente)
                 {
-                    ExcluirCliente((string)nome, (string)cpf);
+                    cliente.ExcluirCliente((string)nome, (string)cpf);
+                    AtualizarDTGridView();
                 }
             }
             else
             {
                 MessageBox.Show("Por favor selecione 1 cliente.","Erro", MessageBoxButtons.OK,MessageBoxIcon.Hand);
             }
+        }
+
+        private void CancelExcClientBTN_Click(object sender, EventArgs e)
+        {
+            MenuClientes menuClientes = new MenuClientes();
+            menuClientes.Show();
+            Close();
         }
     }
 }

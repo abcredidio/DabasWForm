@@ -17,6 +17,6 @@ namespace CadClientesProdutosWForm.Server
 
             connection.Open();
             return connection;
-        }                
+        }
     }
 }

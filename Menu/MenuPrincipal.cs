@@ -1,4 +1,5 @@
 ﻿using CadClientesProdutosWForm.Clientes;
+using CadClientesProdutosWForm.Menu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,34 @@ namespace CadClientesProdutosWForm
         private void BotaoDeTestes_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void MenuCadastroBTN_Click(object sender, EventArgs e)
+        {
+            MenuCadastros menuCadastro = new MenuCadastros();
+            menuCadastro.Show();
+            Close();
+        }
+
+        private void MenuComprasBTN_Click(object sender, EventArgs e)
+        {
+            MenuCompras menuCompras = new MenuCompras();
+            menuCompras.Show();
+            Close();
+        }
+
+        private void MenuVendasBTN_Click(object sender, EventArgs e)
+        {
+            MenuVendas menuVendas = new MenuVendas();
+            menuVendas.Show();
+            Close();
+        }
+
+        private void MenuFinanceiroBTN_Click(object sender, EventArgs e)
+        {
+            MenuFinanceiro menuFinanceiro = new MenuFinanceiro();
+            menuFinanceiro.Show();
+            Close();
         }
     }
 }

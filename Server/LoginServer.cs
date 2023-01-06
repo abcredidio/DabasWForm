@@ -17,6 +17,11 @@ namespace CadClientesProdutosWForm.Server
             InitializeComponent();
         }
 
+        private void FecharLogin()
+        {
+            Close();
+        }
+
         private bool PesquisarLogin()
         {
             Login login = new Login(LoginField.Text, PassField.Text);
@@ -43,11 +48,13 @@ namespace CadClientesProdutosWForm.Server
                 MenuPrincipal menu = new MenuPrincipal();
                 MessageBox.Show("Login efetuado com Sucesso.","Sucesso",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 menu.Show();
+                Hide();
             }
             else
             {
                 MessageBox.Show("Dados incorretos, verifique as informações", "Erro", MessageBoxButtons.OK,MessageBoxIcon.Hand);
             }
+
         }
     }
 }

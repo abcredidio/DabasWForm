@@ -8,12 +8,20 @@ using CadClientesProdutosWForm.Clientes;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace CadClientesProdutosWForm.Clientes
 {
     public partial class CadClientes : Form
     {
-        
+
+        public string EnderecoClientFieldValue { get {return EnderecoClienteField.Text; } set { EnderecoClienteField.Text = value; } }
+        public string BairroClientFieldValue { get { return BairroClienteField.Text; } set { BairroClienteField.Text = value; } }
+        public string UfClientFieldValue { get { return UFClienteField.Text; } set { UFClienteField.Text = value; } }
+        public string CidadeClientFieldValue { get { return CidadeClienteField.Text; } set { CidadeClienteField.Text = value; } }
+
         public CadClientes()
         {
             InitializeComponent();
@@ -34,7 +42,11 @@ namespace CadClientesProdutosWForm.Clientes
                 EmailClienteField,
                 CepClienteField,
                 EnderecoClienteField,
-                CompClienteField
+                UFClienteField,
+                CidadeClienteField,
+                BairroClienteField,
+                NrClienteField
+                
             };
             List<int> soma = new List<int>{};
             foreach (TextBox elemento in elementos)
@@ -51,7 +63,7 @@ namespace CadClientesProdutosWForm.Clientes
                 }
             }
             int sum = soma.Sum();
-            if (sum == 12)
+            if (sum == 18)
             {
                 return true;
             }
@@ -60,14 +72,10 @@ namespace CadClientesProdutosWForm.Clientes
                 return false;
             }
         }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void CancelCdClientBTN_Click(object sender, EventArgs e)
         {
+            MenuClientes menuClientes = new MenuClientes();
+            menuClientes.Show();
             Close();
         }
 
@@ -81,14 +89,20 @@ namespace CadClientesProdutosWForm.Clientes
                 DateTime dtNascimento = DtNascClienteField.Value;
                 int cep = int.Parse(CepClienteField.Text);
                 string endereco = EnderecoClienteField.Text;
+                string numero = NrClienteField.Text;
                 string comp = CompClienteField.Text;
+                string cidade = CidadeClienteField.Text;
+                string uf = UFClienteField.Text;
+                string bairro = BairroClienteField.Text;
 
-                Cliente cliente = new Cliente(nome, cpf, email, dtNascimento, cep, endereco, comp);
+                Cliente cliente = new Cliente(nome, cpf, email, dtNascimento, cep, endereco, comp, cidade, uf, bairro, numero);
 
                 cliente.InsertSqlCliente(cliente);
 
                 MessageBox.Show("Cliente cadastrado com Sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                MenuClientes menuClientes = new MenuClientes();
+                menuClientes.Show();
                 Close();
             }
             else
@@ -96,6 +110,28 @@ namespace CadClientesProdutosWForm.Clientes
                 MessageBox.Show("Por favor preencher todos os campos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
 
+        }
+
+        private void CepClienteField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void CpfClienteField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void BuscarCep_Click(object sender, EventArgs e)
+        {
+            BuscaCEP busca = new BuscaCEP();
+            busca.FindCep(CepClienteField, EnderecoClienteField, BairroClienteField, UFClienteField, CidadeClienteField);
         }
     }
 }

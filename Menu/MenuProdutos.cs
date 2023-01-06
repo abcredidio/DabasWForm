@@ -1,4 +1,5 @@
-﻿using CadClientesProdutosWForm.Produtos;
+﻿using CadClientesProdutosWForm.Menu;
+using CadClientesProdutosWForm.Produtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,15 +19,16 @@ namespace CadClientesProdutosWForm
 
         private void VoltarMenu_Click(object sender, EventArgs e)
         {
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
-            menuPrincipal.Show();
-            Hide();
+            MenuCadastros menuCadastros = new MenuCadastros();
+            menuCadastros.Show();
+            Close();
         }
 
         private void CadProd_Click(object sender, EventArgs e)
         {
             CadProdutos cadProdutos= new CadProdutos();
             cadProdutos.Show();
+            Close();
         }
     }
 }

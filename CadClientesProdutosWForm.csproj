@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="MudBlazor" Version="6.1.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
@@ -27,6 +28,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Cadastros\Estoques\" />
+    <Folder Include="Cadastros\Fornecedores\" />
+    <Folder Include="Cadastros\ClientesPJ\" />
+    <Folder Include="Cadastros\Serviços\" />
+    <Folder Include="Compras\" />
+    <Folder Include="Empresa\" />
+    <Folder Include="Financeiro\" />
+    <Folder Include="Fiscal\" />
+    <Folder Include="Contabilidade\" />
+    <Folder Include="Vendas\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
 

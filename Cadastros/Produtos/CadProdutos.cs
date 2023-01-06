@@ -18,6 +18,8 @@ namespace CadClientesProdutosWForm.Produtos
 
         private void CancelCdProdBTN_Click(object sender, EventArgs e)
         {
+            MenuProdutos menuProdutos = new MenuProdutos();
+            menuProdutos.Show();
             Close();
         }
 
@@ -35,6 +37,8 @@ namespace CadClientesProdutosWForm.Produtos
 
             MessageBox.Show("Produto cadastrado com Sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            MenuProdutos menuProdutos = new MenuProdutos();
+            menuProdutos.Show();
             Close();
         }
     }
